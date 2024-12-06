@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/attendance")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class AttendanceController {
   @Autowired
   private AttendanceService attendanceService;
