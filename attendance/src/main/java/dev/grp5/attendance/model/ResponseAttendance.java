@@ -13,6 +13,7 @@ public class ResponseAttendance {
   private String name;
   private String email;
   private String subjectName;
+  private String role;
   private Integer totalClasses;
   private Integer attendedClasses;
 }
