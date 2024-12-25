@@ -4,6 +4,12 @@ const dArea = document.getElementById("displayArea");
 function getPercentage(toal, attended) {
   return ((attended / toal) * 100).toFixed(2);
 }
+/*
+{
+  id: 1,
+  subject: [IR, DWT]
+}
+*/
 
 function getAttendance(event) {
   event.preventDefault();
@@ -24,6 +30,8 @@ function getAttendance(event) {
       }
     ),
   }).then((data) => {
+    console.log(data  );
+    
     data.json().then((d) => {
       console.log(d);
       if (d[0].role == "admin") {
@@ -147,6 +155,12 @@ const getData = (data) => {
 
         rows.forEach(row => {
           // console.log(row);
+          /*
+        {
+          IR : [total, atte],
+          
+        }
+          */
           
           const subjectName = row.cells[0].textContent;
           // console.log(subjectName);
@@ -158,7 +172,11 @@ const getData = (data) => {
           
           attendance[subjectName] = {  totalClasses: parseInt(totalClasses), attendedClasses: parseInt(attendedClasses)};
         })
-
+        /* {
+            IR: [16, 15],
+            DWT: []
+         }
+        */ 
         console.log(attendance);
         
         // Api call for updation

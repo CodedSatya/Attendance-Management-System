@@ -1,5 +1,6 @@
 package dev.grp5.attendance.service;
 import dev.grp5.attendance.model.User;
+import dev.grp5.attendance.model.UserRequest;
 import dev.grp5.attendance.repository.UserRepository;
 
 import java.util.List;
@@ -21,6 +22,14 @@ public class UserService {
     }
     public List<User> findAllUsers(){
       return userRepository.findAll();
+    }
+    public User login(UserRequest u){
+      User user = userRepository.findByEmail(u.getEmail());
+      System.out.println(user);
+      if (user != null && user.getPassword().equals(u.getPassword())) {
+        return user;
+      }
+      return null;
     }
 
 

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/attendance")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "http://localhost:5500")
 public class AttendanceController {
   @Autowired
   private AttendanceService attendanceService;
@@ -41,7 +41,8 @@ public class AttendanceController {
   @PostMapping("/")
   public ResponseEntity<List<ResponseAttendance>> getAttendance(@RequestBody UserRequest u){
     User user = userService.findUserByEmail(u.getEmail());
-    if(user.getPassword().equals(u.getPassword())){
+    if(user!=null){
+      System.out.println(u.getEmail());
       return ResponseEntity.ok(attendanceService.getAttendanceByUseId(user.getId()));
     }
     return ResponseEntity.badRequest().build();

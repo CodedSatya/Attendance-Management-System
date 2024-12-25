@@ -26,5 +26,4 @@ public class Attendance {
     private String subName;
     private Integer totalClasses;
     private Integer attendedClasses;
-
 }
